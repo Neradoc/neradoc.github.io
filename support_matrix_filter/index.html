@@ -212,74 +212,8 @@ READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerH
 <span id="module-support-matrix"></span><h1>Module Support Matrix - Which Modules Are Available on Which Boards<a class="headerlink" href="#module-support-matrix-which-modules-are-available-on-which-boards" title="Permalink to this headline">¶</a></h1>
 
 <!-- INSERT -->
-<style>
-	#filter_block { position: relative; }
-	#filter {
-		width: 100%;
-	}
-	#filter_num {
-		position: absolute;
-		right: 10px;
-		top: 4px;
-	}
-	.this_module code,
-	.this_module span {
-		background: black;
-		color: white;
-	}
-	.board_hidden {
-		display: none;
-	}
-</style>
-<script>
-function filter_boards(search_string) {
-	$(".board_hidden").removeClass("board_hidden");
-	$(".this_module").removeClass("this_module");
-	if(search_string.trim() == "") {
-		var nvisible = $("#filtered_table tbody tr").length;
-		$("#filter_num").html("("+nvisible+")");
-		return;
-	}
-	var nvisible = 0;
-	$("#filtered_table tbody tr").each( (index,item) => {
-		var name = $(item).find("td:first-child p").html();
-		var modules = $(item).find("a.reference.internal");
-		var matching_all = true;
-		//
-		var list_search = search_string.split(" ").filter(i => i);
-		list_search.forEach((sstring) => {
-			var matching = false;
-			for(var modi = 0; modi < modules.length; ++modi) {
-				module = modules[modi];
-				var mod_name = module.firstChild.firstChild.textContent;
-				if(mod_name.match(sstring)) {
-					$(module).addClass("this_module");
-					matching = true;
-					// break;
-				}
-			}
-			matching_all = matching_all && matching;
-		});
-		if(!matching_all) {
-			$(item).addClass("board_hidden");
-		} else {
-			nvisible += 1;
-		}
-	});
-	$("#filter_num").html("("+nvisible+")");
-}
-
-$(() => {
-	$("#filter").on("keyup", () => {
-		var search_string = $("#filter").val();
-		console.log(search_string);
-		filter_boards(search_string);
-	});
-	var nvisible = $("#filtered_table tbody tr").length;
-	$("#filter_num").html("("+nvisible+")");
-});
-</script>
-
+<link rel="stylesheet" href="filter.css" type="text/css">
+<script type="text/javascript" src="filter.js"></script>
 <p id="filter_block"><input placeholder="Filter the boards by modules available" id="filter" type="text"/><span id="filter_num">(all)</span></p>
 <!-- INSERT -->
 

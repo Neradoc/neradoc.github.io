@@ -1,0 +1,17 @@
+#filter_block { position: relative; }
+#filter {
+	width: 100%;
+}
+#filter_num {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+}
+.this_module code,
+.this_module span {
+	background: black;
+	color: white;
+}
+.board_hidden {
+	display: none;
+}
