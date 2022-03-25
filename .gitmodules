@@ -1,0 +1,3 @@
+[submodule "web-config-file-maker"]
+	path = web-config-file-maker
+	url = https://github.com/Neradoc/web-config-file-maker
