@@ -1,3 +1,6 @@
 [submodule "web-config-file-maker"]
 	path = web-config-file-maker
 	url = https://github.com/Neradoc/web-config-file-maker
+[submodule "circup-web"]
+	path = circup-web
+	url = git@github.com:Neradoc/circuitpython-web-packager.git
